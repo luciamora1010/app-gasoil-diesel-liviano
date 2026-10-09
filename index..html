@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Gasoil y diésel liviano — pantallas para Figma</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --oliva:#756F4B;
+  --oliva-claro:#A9A27C;
+  --beige:#E0D8B0;
+  --crema:#F0EBD7;
+  --mostaza:#867416;
+  --mostaza-claro:#BEA74B;
+  --amarillo:#F8DE7E;
+  --amarillo-claro:#FEEEB8;
+  --tinta:#3A3724;
+  --tarjeta:#FBF8EC;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --oliva:#756F4B; --oliva-claro:#A9A27C; --beige:#E0D8B0; --crema:#F0EBD7;
+    --mostaza:#867416; --mostaza-claro:#BEA74B; --amarillo:#F8DE7E; --amarillo-claro:#FEEEB8;
+    --tinta:#3A3724; --tarjeta:#FBF8EC;
+  }
+}
+:root[data-theme="dark"]{
+  --oliva:#756F4B; --oliva-claro:#A9A27C; --beige:#E0D8B0; --crema:#F0EBD7;
+  --mostaza:#867416; --mostaza-claro:#BEA74B; --amarillo:#F8DE7E; --amarillo-claro:#FEEEB8;
+  --tinta:#3A3724; --tarjeta:#FBF8EC;
+}
+
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  background:#E7E2CC;
+  color:var(--tinta);
+  font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:15px;
+  line-height:1.5;
+  padding:48px 24px;
+}
+.lienzo{
+  display:flex;
+  flex-wrap:wrap;
+  gap:48px;
+  justify-content:center;
+  align-items:flex-start;
+  max-width:100%;
+}
+.pantalla{
+  width:390px;
+  background:var(--crema);
+  border-radius:28px;
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+  box-shadow:0 12px 40px rgba(117,111,75,.22);
+}
+.nombre-frame{
+  font-size:12px;
+  color:var(--oliva);
+  margin-bottom:10px;
+  padding-left:4px;
+}
+.cuerpo{padding:28px 20px 20px 20px;display:flex;flex-direction:column;gap:0;}
+
+/* tipografía */
+.display{font-family:"Fraunces",Georgia,serif;font-weight:500;letter-spacing:-.01em;}
+.eyebrow{font-size:13px;color:var(--oliva-claro);}
+.titulo{font-size:30px;line-height:1.1;margin-top:4px;}
+.intro{margin-top:12px;font-size:15px;line-height:1.6;color:var(--oliva);}
+.num{font-variant-numeric:tabular-nums;}
+
+/* tarjetas */
+.tarjeta{
+  background:var(--tarjeta);
+  border:1px solid var(--beige);
+  border-radius:16px;
+  padding:20px;
+}
+.tarjeta-activa{background:var(--amarillo-claro);border-color:var(--mostaza-claro);}
+
+/* torre */
+.torre{
+  margin-top:24px;
+  background:var(--tarjeta);
+  border:1px solid var(--beige);
+  border-radius:24px;
+  padding:16px;
+}
+.fila{
+  display:grid;
+  grid-template-columns:58px 1fr 90px;
+  align-items:center;
+  gap:8px;
+  margin-bottom:3px;
+}
+.fila-temp{font-size:11px;text-align:right;color:var(--oliva-claro);}
+.fila-temp-activa{color:var(--mostaza);}
+.banda{
+  height:42px;
+  border-radius:4px;
+  opacity:.62;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 12px;
+}
+.banda-activa{height:54px;opacity:1;box-shadow:inset 0 0 0 2px rgba(58,55,36,.13);}
+.banda span{font-size:13px;font-weight:600;}
+.tick{height:2px;width:14px;opacity:.55;}
+.tick-activo{width:34px;}
+.fila-carbonos{font-size:11px;line-height:1.25;color:var(--tinta);}
+.pie-torre{font-size:11px;color:var(--oliva-claro);margin:12px 0 0 58px;}
+
+/* detalle de fracción */
+.detalle{margin-top:20px;}
+.detalle-cabecera{display:flex;justify-content:space-between;align-items:baseline;gap:12px;}
+.detalle-cabecera h2{font-size:22px;}
+.detalle-temp{font-size:12px;color:var(--mostaza);}
+.lista{margin-top:12px;list-style:none;display:flex;flex-direction:column;gap:8px;}
+.lista li{display:flex;gap:8px;font-size:14px;line-height:1.35;}
+.guion{color:var(--mostaza);}
+.usos{margin-top:12px;font-size:14px;line-height:1.6;color:var(--oliva);}
+.nota-detalle{
+  margin-top:16px;padding-top:12px;border-top:1px solid var(--mostaza-claro);
+  font-size:13px;color:var(--mostaza);
+}
+
+/* botones */
+.boton{
+  margin-top:24px;
+  display:block;
+  width:100%;
+  text-align:center;
+  border:none;
+  border-radius:999px;
+  padding:16px 24px;
+  font-size:15px;
+  font-weight:600;
+  background:var(--mostaza);
+  color:var(--amarillo-claro);
+  box-shadow:0 6px 18px rgba(134,116,22,.28);
+}
+.boton-grande{
+  border-radius:16px;
+  padding:20px 24px;
+  font-size:16px;
+  background:var(--oliva);
+  box-shadow:0 8px 22px rgba(117,111,75,.32);
+}
+
+/* propiedades */
+.propiedades{margin-top:24px;display:flex;flex-direction:column;gap:12px;}
+.propiedad{
+  background:var(--tarjeta);border:1px solid var(--beige);border-radius:16px;
+  padding:16px 20px;
+}
+.propiedad-cabecera{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;}
+.propiedad-nombre{font-size:16px;font-weight:600;}
+.propiedad-dato{display:block;font-size:12px;margin-top:2px;color:var(--oliva-claro);}
+.propiedad-dato-activo{color:var(--mostaza);}
+.mas{
+  flex:0 0 auto;width:30px;height:30px;border-radius:999px;
+  background:var(--crema);color:var(--oliva);
+  display:flex;align-items:center;justify-content:center;font-size:18px;line-height:1;
+}
+.mas-activo{background:var(--mostaza);color:var(--amarillo-claro);}
+.propiedad-texto{margin-top:12px;font-size:14px;line-height:1.6;}
+.propiedad-extra{margin-top:8px;font-size:13px;line-height:1.6;color:var(--mostaza);}
+
+/* comparaciones */
+.subtitulo{font-size:21px;margin-top:32px;}
+.comparaciones{margin-top:12px;display:flex;flex-direction:column;gap:12px;}
+.comparacion-cabecera{display:flex;justify-content:space-between;align-items:baseline;}
+.comparacion-cabecera strong{font-size:15px;font-weight:600;}
+.comparacion-unidad{font-size:11px;color:var(--oliva-claro);}
+.barra-fila{margin-top:12px;}
+.barra-etiquetas{display:flex;justify-content:space-between;font-size:13px;}
+.barra-valor{color:var(--oliva);}
+.pista{margin-top:6px;height:10px;border-radius:999px;background:var(--crema);overflow:hidden;}
+.relleno{height:100%;border-radius:999px;background:var(--mostaza);}
+.relleno-claro{background:var(--mostaza-claro);}
+.nota{margin-top:12px;font-size:12.5px;line-height:1.6;color:var(--oliva);}
+
+/* sliders */
+.sliders{margin-top:24px;display:flex;flex-direction:column;gap:12px;}
+.slider-cabecera{display:flex;justify-content:space-between;align-items:flex-end;gap:12px;}
+.slider-etiqueta{font-size:14px;font-weight:600;}
+.slider-ayuda{display:block;font-size:11.5px;margin-top:2px;color:var(--oliva-claro);}
+.slider-valor{font-size:32px;line-height:1;color:var(--mostaza);text-align:right;}
+.slider-unidad{display:block;font-size:11px;margin-top:6px;color:var(--oliva-claro);text-align:right;}
+.slider-pista{margin-top:14px;height:8px;border-radius:999px;background:var(--beige);position:relative;}
+.slider-relleno{height:8px;border-radius:999px;background:var(--mostaza-claro);}
+.slider-pomo{
+  position:absolute;top:-9px;width:26px;height:26px;border-radius:999px;
+  background:var(--crema);border:3px solid var(--mostaza);
+  box-shadow:0 1px 3px rgba(117,111,75,.45);
+}
+.slider-limites{display:flex;justify-content:space-between;font-size:10.5px;margin-top:6px;color:var(--oliva-claro);}
+
+/* resultado */
+.resultado-titulo{font-size:21px;margin-top:24px;}
+.veredicto{margin-top:12px;background:var(--tarjeta);border:1px solid var(--mostaza-claro);border-radius:16px;padding:20px;}
+.veredicto strong{display:block;font-size:16px;color:var(--mostaza);}
+.veredicto p{margin-top:8px;font-size:14px;line-height:1.6;}
+.metricas{margin-top:12px;display:flex;flex-wrap:wrap;gap:12px;}
+.metrica{
+  flex:1 1 150px;background:var(--tarjeta);border:1px solid var(--beige);
+  border-radius:16px;padding:16px;
+}
+.metrica-icono{color:var(--mostaza);display:block;}
+.metrica-etiqueta{display:block;font-size:11.5px;margin-top:8px;color:var(--oliva-claro);}
+.metrica-valor{display:block;font-size:20px;margin-top:2px;}
+.aviso{margin-top:24px;font-size:12.5px;line-height:1.6;color:var(--oliva-claro);}
+
+/* navegación */
+.nav{
+  margin-top:auto;
+  background:var(--tarjeta);
+  border-top:1px solid var(--beige);
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  padding:8px 12px 20px 12px;
+}
+.nav-item{
+  display:flex;flex-direction:column;align-items:center;gap:4px;
+  padding:8px 0;border-radius:12px;color:var(--oliva-claro);
+}
+.nav-item-activo{background:var(--amarillo-claro);color:var(--mostaza);}
+.nav-item span{font-size:11.5px;font-weight:500;}
+</style>
+</head>
+<body>
+
+<div class="lienzo">
+
+  <!-- ============ PANTALLA 1 ============ -->
+  <div>
+    <p class="nombre-frame">01 · Refinación</p>
+    <div class="pantalla">
+      <div class="cuerpo">
+        <p class="eyebrow">Del crudo al combustible</p>
+        <h1 class="display titulo">Torre de destilación fraccionada</h1>
+        <p class="intro">El petróleo se calienta y sube por la torre. Cada fracción condensa a una altura distinta según su temperatura de ebullición. Tocá una fracción para verla.</p>
+
+        <div class="torre">
+          <div class="fila">
+            <span class="num fila-temp">&lt; 20 °C</span>
+            <div class="banda" style="background:#FEEEB8;border-top-left-radius:26px;border-top-right-radius:26px;">
+              <span style="color:#3A3724;">Gases</span>
+              <i class="tick" style="background:#3A3724;"></i>
+            </div>
+            <span class="fila-carbonos"></span>
+          </div>
+          <div class="fila">
+            <span class="num fila-temp">40 – 150 °C</span>
+            <div class="banda" style="background:#F8DE7E;">
+              <span style="color:#3A3724;">Nafta</span>
+              <i class="tick" style="background:#3A3724;"></i>
+            </div>
+            <span class="fila-carbonos"></span>
+          </div>
+          <div class="fila">
+            <span class="num fila-temp">150 – 250 °C</span>
+            <div class="banda" style="background:#BEA74B;">
+              <span style="color:#3A3724;">Querosene</span>
+              <i class="tick" style="background:#3A3724;"></i>
+            </div>
+            <span class="fila-carbonos"></span>
+          </div>
+          <div class="fila">
+            <span class="num fila-temp fila-temp-activa">250 – 350 °C</span>
+            <div class="banda banda-activa" style="background:#867416;box-shadow:0 4px 14px rgba(134,116,22,.4);">
+              <span style="color:#F5F0DC;">Gasoil</span>
+              <i class="tick tick-activo" style="background:#F5F0DC;"></i>
+            </div>
+            <span class="fila-carbonos">10 a 20 átomos de carbono</span>
+          </div>
+          <div class="fila">
+            <span class="num fila-temp">350 – 400 °C</span>
+            <div class="banda" style="background:#756F4B;">
+              <span style="color:#F5F0DC;">Fuel Oil</span>
+              <i class="tick" style="background:#F5F0DC;"></i>
+            </div>
+            <span class="fila-carbonos"></span>
+          </div>
+          <div class="fila">
+            <span class="num fila-temp">&gt; 400 °C</span>
+            <div class="banda" style="background:#4F4A33;border-bottom-left-radius:10px;border-bottom-right-radius:10px;">
+              <span style="color:#F5F0DC;">Residuo</span>
+              <i class="tick" style="background:#F5F0DC;"></i>
+            </div>
+            <span class="fila-carbonos"></span>
+          </div>
+          <p class="num pie-torre">Entrada del crudo calentado ↑</p>
+        </div>
+
+        <div class="detalle">
+          <div class="tarjeta tarjeta-activa">
+            <div class="detalle-cabecera">
+              <h2 class="display">Gasoil</h2>
+              <span class="num detalle-temp">250 – 350 °C</span>
+            </div>
+            <ul class="lista">
+              <li><span class="guion">—</span><span>Fracción media del petróleo</span></li>
+              <li><span class="guion">—</span><span>10–20 átomos de carbono por molécula</span></li>
+              <li><span class="guion">—</span><span>Se obtiene mediante destilación fraccionada</span></li>
+            </ul>
+            <p class="usos">Se utiliza principalmente en motores diésel, camiones, maquinaria agrícola y embarcaciones.</p>
+            <p class="nota-detalle">Es la fracción que sigue en esta app.</p>
+          </div>
+        </div>
+
+        <div class="boton">Explorar propiedades</div>
+      </div>
+
+      <nav class="nav">
+        <div class="nav-item nav-item-activo">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21V6a5 5 0 0 1 10 0v15"/><path d="M4 21h16"/><path d="M7 10h10M7 14h10"/></svg>
+          <span>Refinación</span>
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 10.5a6 6 0 0 1-12 0C6 9.5 12 3 12 3Z"/></svg>
+          <span>Propiedades</span>
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 6V3M5.6 8.6 3.5 6.5M18.4 8.6l2.1-2.1"/><path d="M4 18a8 8 0 1 1 16 0"/></svg>
+          <span>Simulador</span>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ============ PANTALLA 2 ============ -->
+  <div>
+    <p class="nombre-frame">02 · Propiedades</p>
+    <div class="pantalla">
+      <div class="cuerpo">
+        <p class="eyebrow">Qué mide cada cosa</p>
+        <h1 class="display titulo">Propiedades del gasoil</h1>
+        <p class="intro">Estas cinco variables describen cómo se comporta el diésel liviano dentro de un motor. Tocá una para abrirla.</p>
+
+        <div class="propiedades">
+          <div class="propiedad" style="background:#FEEEB8;border-color:#BEA74B;">
+            <div class="propiedad-cabecera">
+              <div>
+                <span class="propiedad-nombre">Número de cetano</span>
+                <span class="num propiedad-dato propiedad-dato-activo">45 – 55 típico</span>
+              </div>
+              <div class="mas mas-activo">×</div>
+            </div>
+            <p class="propiedad-texto">Indica la facilidad con la que el combustible se enciende dentro de un motor diésel.</p>
+            <p class="propiedad-extra">Cuanto más alto, menor es el retardo entre la inyección y el encendido: el motor arranca mejor y funciona más suave.</p>
+          </div>
+
+          <div class="propiedad">
+            <div class="propiedad-cabecera">
+              <div>
+                <span class="propiedad-nombre">Densidad</span>
+                <span class="num propiedad-dato">820 – 860 kg/m³</span>
+              </div>
+              <div class="mas">+</div>
+            </div>
+          </div>
+
+          <div class="propiedad">
+            <div class="propiedad-cabecera">
+              <div>
+                <span class="propiedad-nombre">Volatilidad</span>
+                <span class="propiedad-dato">Baja</span>
+              </div>
+              <div class="mas">+</div>
+            </div>
+          </div>
+
+          <div class="propiedad">
+            <div class="propiedad-cabecera">
+              <div>
+                <span class="propiedad-nombre">Contenido de azufre</span>
+                <span class="num propiedad-dato">10 – 50 ppm</span>
+              </div>
+              <div class="mas">+</div>
+            </div>
+          </div>
+
+          <div class="propiedad">
+            <div class="propiedad-cabecera">
+              <div>
+                <span class="propiedad-nombre">Poder energético</span>
+                <span class="num propiedad-dato">≈ 45 MJ/kg</span>
+              </div>
+              <div class="mas">+</div>
+            </div>
+          </div>
+        </div>
+
+        <h2 class="display subtitulo">Gasoil frente a nafta</h2>
+        <div class="comparaciones">
+          <div class="tarjeta">
+            <div class="comparacion-cabecera">
+              <strong>Densidad</strong>
+              <span class="comparacion-unidad">kg/m³</span>
+            </div>
+            <div class="barra-fila">
+              <div class="barra-etiquetas"><span>Gasoil</span><span class="num barra-valor">840</span></div>
+              <div class="pista"><div class="relleno" style="width:93%;"></div></div>
+            </div>
+            <div class="barra-fila">
+              <div class="barra-etiquetas"><span>Nafta</span><span class="num barra-valor">745</span></div>
+              <div class="pista"><div class="relleno relleno-claro" style="width:82%;"></div></div>
+            </div>
+            <p class="nota">Un litro de gasoil pesa alrededor de un 13 % más que un litro de nafta.</p>
+          </div>
+
+          <div class="tarjeta">
+            <div class="comparacion-cabecera">
+              <strong>Volatilidad</strong>
+              <span class="comparacion-unidad">tendencia a evaporarse</span>
+            </div>
+            <div class="barra-fila">
+              <div class="barra-etiquetas"><span>Gasoil</span><span class="barra-valor">Baja</span></div>
+              <div class="pista"><div class="relleno" style="width:26%;"></div></div>
+            </div>
+            <div class="barra-fila">
+              <div class="barra-etiquetas"><span>Nafta</span><span class="barra-valor">Alta</span></div>
+              <div class="pista"><div class="relleno relleno-claro" style="width:88%;"></div></div>
+            </div>
+            <p class="nota">La nafta forma vapores a temperatura ambiente; el gasoil casi no.</p>
+          </div>
+        </div>
+
+        <div class="boton">Probar simulador</div>
+      </div>
+
+      <nav class="nav">
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21V6a5 5 0 0 1 10 0v15"/><path d="M4 21h16"/><path d="M7 10h10M7 14h10"/></svg>
+          <span>Refinación</span>
+        </div>
+        <div class="nav-item nav-item-activo">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 10.5a6 6 0 0 1-12 0C6 9.5 12 3 12 3Z"/></svg>
+          <span>Propiedades</span>
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 6V3M5.6 8.6 3.5 6.5M18.4 8.6l2.1-2.1"/><path d="M4 18a8 8 0 1 1 16 0"/></svg>
+          <span>Simulador</span>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+  <!-- ============ PANTALLA 3 ============ -->
+  <div>
+    <p class="nombre-frame">03 · Simulador</p>
+    <div class="pantalla">
+      <div class="cuerpo">
+        <p class="eyebrow">Armá tu propio combustible</p>
+        <h1 class="display titulo">Simulador de diésel</h1>
+        <p class="intro">Movés las tres variables y ves cómo cambian el encendido, el impacto ambiental y el rendimiento.</p>
+
+        <div class="sliders">
+          <div class="tarjeta">
+            <div class="slider-cabecera">
+              <div>
+                <span class="slider-etiqueta">Número de cetano</span>
+                <span class="slider-ayuda">Facilidad de encendido</span>
+              </div>
+              <div>
+                <span class="num display slider-valor">50</span>
+                <span class="num slider-unidad">índice</span>
+              </div>
+            </div>
+            <div class="slider-pista">
+              <div class="slider-relleno" style="width:50%;"></div>
+              <div class="slider-pomo" style="left:calc(50% - 13px);"></div>
+            </div>
+            <div class="num slider-limites"><span>35</span><span>65</span></div>
+          </div>
+
+          <div class="tarjeta">
+            <div class="slider-cabecera">
+              <div>
+                <span class="slider-etiqueta">Contenido de azufre</span>
+                <span class="slider-ayuda">Compuestos sulfurados que quedan tras el refinado</span>
+              </div>
+              <div>
+                <span class="num display slider-valor">20</span>
+                <span class="num slider-unidad">ppm</span>
+              </div>
+            </div>
+            <div class="slider-pista">
+              <div class="slider-relleno" style="width:4%;"></div>
+              <div class="slider-pomo" style="left:calc(4% - 13px);"></div>
+            </div>
+            <div class="num slider-limites"><span>0</span><span>500</span></div>
+          </div>
+
+          <div class="tarjeta">
+            <div class="slider-cabecera">
+              <div>
+                <span class="slider-etiqueta">Densidad</span>
+                <span class="slider-ayuda">Masa por litro de combustible</span>
+              </div>
+              <div>
+                <span class="num display slider-valor">840</span>
+                <span class="num slider-unidad">kg/m³</span>
+              </div>
+            </div>
+            <div class="slider-pista">
+              <div class="slider-relleno" style="width:40%;"></div>
+              <div class="slider-pomo" style="left:calc(40% - 13px);"></div>
+            </div>
+            <div class="num slider-limites"><span>800</span><span>900</span></div>
+          </div>
+        </div>
+
+        <div class="boton boton-grande">Analizar combustible</div>
+
+        <h2 class="display resultado-titulo">Resultado</h2>
+
+        <div class="veredicto" style="background:#FEEEB8;">
+          <strong>Combustible de características medias</strong>
+          <p>Funciona, pero hay margen para mejorar: subir el cetano o bajar el azufre cambia bastante el resultado.</p>
+        </div>
+
+        <div class="metricas">
+          <div class="metrica">
+            <svg class="metrica-icono" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c3.9 0 6-2.6 6-5.7 0-3.6-3.4-5.2-3.4-8.3 0-1.4.6-2.6 1.3-3.4-3.6.4-6.4 3-6.4 6.2 0 1.3.4 2.2.4 2.9 0 1-.8 1.6-1.6 1.6-.7 0-1.3-.4-1.6-.9-.5.9-.7 1.9-.7 2.9C6 19.4 8.1 22 12 22Z"/></svg>
+            <span class="metrica-etiqueta">Facilidad de encendido</span>
+            <span class="display metrica-valor">Media</span>
+          </div>
+          <div class="metrica">
+            <svg class="metrica-icono" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-8 5-14 16-14 0 9-5 14-13 14H4Z"/><path d="M9 15c2-3 5-5 8-6"/></svg>
+            <span class="metrica-etiqueta">Impacto ambiental</span>
+            <span class="display metrica-valor">Bajo</span>
+          </div>
+          <div class="metrica">
+            <svg class="metrica-icono" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M19.1 4.9 17 7M7 17l-2.1 2.1"/></svg>
+            <span class="metrica-etiqueta">Rendimiento estimado</span>
+            <span class="num display metrica-valor">69 %</span>
+            <div class="pista" style="margin-top:8px;"><div class="relleno" style="width:69%;"></div></div>
+          </div>
+        </div>
+
+        <p class="aviso">El simulador usa relaciones simplificadas con fines educativos. No representa el diagnóstico real de un motor ni sustituye una especificación técnica de combustible.</p>
+      </div>
+
+      <nav class="nav">
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M7 21V6a5 5 0 0 1 10 0v15"/><path d="M4 21h16"/><path d="M7 10h10M7 14h10"/></svg>
+          <span>Refinación</span>
+        </div>
+        <div class="nav-item">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.5 6 10.5a6 6 0 0 1-12 0C6 9.5 12 3 12 3Z"/></svg>
+          <span>Propiedades</span>
+        </div>
+        <div class="nav-item nav-item-activo">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 14a2 2 0 1 0 0-4 2 2 0 0 0 0 4Z"/><path d="M12 6V3M5.6 8.6 3.5 6.5M18.4 8.6l2.1-2.1"/><path d="M4 18a8 8 0 1 1 16 0"/></svg>
+          <span>Simulador</span>
+        </div>
+      </nav>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
